@@ -12,7 +12,7 @@ The Dart classes can be found under `lib/models` as well as the Hive generated a
 
 
 The Model:
-```json
+```
 {
   'age': 40,
   'firstSeen': 'ep1',
