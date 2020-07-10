@@ -1,0 +1,17 @@
+namespace Models;
+
+table Actor {
+  name: string;
+  date_of_birth: ulong ;
+  birth_city: string;
+}
+
+table Character {
+  name:string;
+  house:string;  
+  played_by:Actor;
+  age:int;
+  first_seen:string;  
+}
+
+root_type Character;
