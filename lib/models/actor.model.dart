@@ -37,15 +37,15 @@ class Actor extends HiveObject {
     );
   }
 
-  Map<int, dynamic> toMap() {
+  Map<String, dynamic> toMap() {
     return {
-      0: name,
-      1: dateOfBirth,
-      2: birthCity,
+      'name': name,
+      'dateOfBirth': dateOfBirth,
+      'birthCity': birthCity,
     };
   }
 
-  static Actor fromMap(Map<int, dynamic> map) {
+  static Actor fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Actor(

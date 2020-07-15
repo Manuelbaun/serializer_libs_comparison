@@ -50,23 +50,23 @@ class Character extends HiveObject {
     );
   }
 
-  Map<int, dynamic> toMap() {
+  Map<String, dynamic> toMap() {
     return {
-      0: name,
-      1: house,
-      2: playedBy?.toMap(),
-      3: age,
-      4: firstSeen,
+      'name': name,
+      'house': house,
+      'playedBy': playedBy?.toMap(),
+      'age': age,
+      'firstSeen': firstSeen,
     };
   }
 
-  static Character fromMap(Map<int, dynamic> map) {
+  static Character fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Character(
       name: map[0],
       house: map[1],
-      playedBy: Actor.fromMap((map[2] as Map).cast<int, dynamic>()),
+      playedBy: Actor.fromMap((map[2] as Map)),
       age: map[3],
       firstSeen: map[4],
     );

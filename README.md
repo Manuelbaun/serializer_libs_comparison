@@ -26,6 +26,9 @@ The Model:
 }
 ```
 
+**Note [Edit]**:
+*all MessagePack toMap or fromMap where first using integer as keys and not string keys as regular json. That is why there encoding size is so much smaller compared to their json version. This was changed below when added also FlexBuffers.*
+
 
 I used `dart2native` to compile to machine code and run the test in a loop and to average them out. My CPU Intel i9-9900k:
 
@@ -118,22 +121,27 @@ Thoughts:
 
 
 ### Update 15.07.2020
-Added encoding via Flexbuffer
+* Added encoding via Flexbuffer
+* Added MessagePack en/decoding when `Map<String, dynamic>`
+* Added MessagePack en/decoding when `Map<int, dynamic>`
+
 Runs 1000:
 
 ```
-Hive                             Types.encode        70 bytes :     21.349 average ticks
-Hive                             Types.decode        70 bytes :     17.166 average ticks
-Flatbuffers objectBuilder        Types.encode       160 bytes :     29.019 average ticks
-Flatbuffers objectBuilder        Types.decode       160 bytes :       1.55 average ticks
-Flatbuffers buffersBuilder       Types.encode       160 bytes :     31.653 average ticks
-Flatbuffers buffersBuilder       Types.decode       160 bytes :      1.241 average ticks
-Message Pack                     Types.encode        70 bytes :     46.659 average ticks
-Message Pack                     Types.decode        70 bytes :     19.075 average ticks
-FlexBuffers build from Object    Types.encode       200 bytes :     96.137 average ticks
-FlexBuffers Reference Object     Types.decode       200 bytes :      2.196 average ticks
-FlexBuffers build into Vector    Types.encode       130 bytes :     45.636 average ticks
-FlexBuffers build into Map       Types.encode       154 bytes :     68.367 average ticks
+Hive                             Types.encode        70 bytes :     19.707 average ticks
+Hive                             Types.decode        70 bytes :     18.647 average ticks
+Flatbuffers objectBuilder        Types.encode       160 bytes :     26.845 average ticks
+Flatbuffers objectBuilder        Types.decode       160 bytes :      1.517 average ticks
+Flatbuffers buffersBuilder       Types.encode       160 bytes :     29.244 average ticks
+Flatbuffers buffersBuilder       Types.decode       160 bytes :      1.289 average ticks
+Message Pack with toMap Json     Types.encode       123 bytes :     53.601 average ticks
+Message Pack with fromMap Json   Types.decode       123 bytes :     24.704 average ticks
+Message Pack map, int keys       Types.encode        67 bytes :     21.645 average ticks
+Message Pack map, int keys       Types.decode        67 bytes :     14.965 average ticks
+FlexBuffers build from Object    Types.encode       200 bytes :     83.324 average ticks
+FlexBuffers Reference Object     Types.decode       200 bytes :      1.965 average ticks
+FlexBuffers build into Vector    Types.encode       130 bytes :     41.927 average ticks
+FlexBuffers build into Map       Types.encode       154 bytes :     59.077 average ticks
 ```
 
 

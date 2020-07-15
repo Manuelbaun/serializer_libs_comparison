@@ -14,15 +14,15 @@ const TEST_DATA = <String, dynamic>{
   },
 };
 
-const TEST_DATA_NO_KEYS = <String, dynamic>{
-  '1': 40,
-  '2': 'ep1',
-  '3': 'Lannister',
-  '4': 'Tyrion',
-  '5': {
-    '1': 'Morristown',
-    '2': -17625600000, //DateTime(1969, 6, 11).millisecondsSinceEpoch
-    '3': 'Peter Dinklage',
+const TEST_DATA_NO_KEYS = <int, dynamic>{
+  0: 40,
+  1: 'ep1',
+  2: 'Lannister',
+  3: 'Tyrion',
+  4: {
+    0: 'Morristown',
+    1: -17625600000, //DateTime(1969, 6, 11).millisecondsSinceEpoch
+    2: 'Peter Dinklage',
   },
 };
 
