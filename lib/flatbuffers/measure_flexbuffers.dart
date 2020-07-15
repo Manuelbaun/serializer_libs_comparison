@@ -4,9 +4,9 @@ import 'package:serializer_libs_comparison/utils/custom_stopwatch.dart';
 import '../data.dart';
 
 void measureFlexbuffers() {
+  _buildFromObject();
   _buildVector();
   _buildMap();
-  _buildFromObject();
 }
 
 void _buildFromObject() {
@@ -21,6 +21,20 @@ void _buildFromObject() {
       bytes: bytes.lengthInBytes,
       type: Types.encode,
       watch: s));
+
+  final s2 = CustomStopWatch('Flexbuffer')..start();
+
+  final bytes2 = Reference.fromBuffer(bytes);
+
+  // bytes2.mapKeyIterable.forEach(print);
+
+  s2..stop();
+
+  TIME_RECORDER.add(Tracking(
+      library: 'FlexBuffers Reference Object',
+      bytes: bytes.lengthInBytes,
+      type: Types.decode,
+      watch: s2));
 }
 
 void _buildVector() {
@@ -46,6 +60,18 @@ void _buildVector() {
       bytes: bytes.length,
       type: Types.encode,
       watch: s));
+
+  // final s2 = CustomStopWatch('Flexbuffer')..start();
+
+  // final bytes2 = Reference.fromBuffer(bytes.buffer);
+
+  // s2..stop();
+
+  // TIME_RECORDER.add(Tracking(
+  //     library: 'FlexBuffers build from Vector bytes',
+  //     bytes: bytes.lengthInBytes,
+  //     type: Types.decode,
+  //     watch: s2));
 }
 
 void _buildMap() {
@@ -83,4 +109,18 @@ void _buildMap() {
       bytes: bytes.length,
       type: Types.encode,
       watch: s));
+
+  // final s2 = CustomStopWatch('Flexbuffer')..start();
+
+  // final bytes2 = Reference.fromBuffer(bytes.buffer);
+
+  // s2..stop();
+
+  // bytes2.mapKeyIterable.forEach(print);
+
+  // TIME_RECORDER.add(Tracking(
+  //     library: 'FlexBuffers build from Map bytes',
+  //     bytes: bytes.lengthInBytes,
+  //     type: Types.decode,
+  //     watch: s2));
 }
