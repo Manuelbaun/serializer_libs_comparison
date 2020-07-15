@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:serializer_libs_comparison/data.dart';
 import 'package:serializer_libs_comparison/flatbuffers/measure_flatbuffers.dart';
+import 'package:serializer_libs_comparison/flatbuffers/measure_flexbuffers.dart';
 import 'package:serializer_libs_comparison/hive/hive_helper/register_adapters.dart';
 import 'package:serializer_libs_comparison/hive/measure_hive.dart';
 import 'package:serializer_libs_comparison/message_pack/measure_message_pack.dart';
@@ -15,6 +16,7 @@ void main(List<String> arguments) {
     measureHive();
     measureFlatbuffers();
     measureMessagePack();
+    measureFlexbuffers();
   }
 
   final map = <String, int>{};

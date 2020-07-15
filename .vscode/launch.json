@@ -9,6 +9,12 @@
             "program": "bin/main.dart",
             "request": "launch",
             "type": "dart"
+        },
+        {
+            "name": "Dart Debug current",
+            "program": "${file}",
+            "request": "launch",
+            "type": "dart"
         }
     ]
 }

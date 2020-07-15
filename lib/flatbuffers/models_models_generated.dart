@@ -120,8 +120,11 @@ class Character {
 
   final fb.BufferContext _bc;
   final int _bcOffset;
+  String _name;
 
-  String get name => const fb.StringReader().vTableGet(_bc, _bcOffset, 4, null);
+  String get name =>
+      _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 4, null);
+
   String get house =>
       const fb.StringReader().vTableGet(_bc, _bcOffset, 6, null);
   Actor get playedBy => Actor.reader.vTableGet(_bc, _bcOffset, 8, null);

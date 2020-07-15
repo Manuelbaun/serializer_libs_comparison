@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:serializer_libs_comparison/utils/custom_stopwatch.dart';
 
 import 'package:hive/hive.dart';
@@ -11,22 +13,21 @@ void measureHive() async {
   ///
   /// Serializing
   ///
+  final encode = Utf8Encoder();
+  final decode = Utf8Decoder();
 
   final s = CustomStopWatch('\nHive serializing Character\n')..start();
   final writer = BinaryWriterImpl(Hive);
 
   writer
-    ..writeByte(5)
-    ..writeByte(0)
-    ..write(character.name)
-    ..writeByte(1)
-    ..write(character.house)
-    ..writeByte(2)
+    ..writeByte(character.name.length)
+    ..writeString(character.name, writeByteCount: false)
+    ..writeByte(character.house.length)
+    ..writeString(character.house, writeByteCount: false)
     ..write(character.playedBy)
-    ..writeByte(3)
-    ..write(character.age)
-    ..writeByte(4)
-    ..write(character.firstSeen);
+    ..writeByte(character.age)
+    ..writeByte(character.firstSeen.length)
+    ..writeString(character.firstSeen, writeByteCount: false);
 
   final bytes = writer.toBytes();
   s..stop();
@@ -39,20 +40,14 @@ void measureHive() async {
   ///
 
   final s2 = CustomStopWatch('Hive deserialized Character\n')..start();
-
   final reader = BinaryReaderImpl(bytes, Hive);
-  var numOfFields = reader.readByte();
-
-  var fields = <int, dynamic>{
-    for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-  };
 
   final char = Character()
-    ..name = fields[0] as String
-    ..house = fields[1] as String
-    ..playedBy = fields[2] as Actor
-    ..age = fields[3] as int
-    ..firstSeen = fields[4] as String;
+    ..name = reader.readString(reader.readByte())
+    ..house = reader.readString(reader.readByte())
+    ..playedBy = reader.read() as Actor
+    ..age = reader.readByte()
+    ..firstSeen = reader.readString(reader.readByte());
 
   s2..stop();
 

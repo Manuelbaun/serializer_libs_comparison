@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flat_buffers/flat_buffers.dart';
@@ -62,13 +63,15 @@ void _buffersBuilder() {
       CustomStopWatch('\nFlatbuffers: buffersBuilder serializing Character\n')
         ..start();
 
-  final builder = Builder(initialSize: 256);
+  final builder = Builder(initialSize: 128);
 
   ///
   /// Serializing
   ///
 
   // first create Actor
+  final name = TEST_DATA['actor']['name'];
+  final nameList = utf8.encode(name);
   final off1 = builder.writeString(TEST_DATA['actor']['name']);
   final off2 = builder.writeString(TEST_DATA['actor']['birthCity']);
   final dateOfBirth = TEST_DATA['actor']['dateOfBirth'];
@@ -117,6 +120,15 @@ void _buffersBuilder() {
 CustomStopWatch _deserialize(Uint8List bytes) {
   final s = CustomStopWatch('Flatbuffers deserialized Character\n')..start();
   final char = Character(bytes);
+  // char.age;
+
+  // char.firstSeen;
+  // char.house;
+
+  // for (int i = 0; i < 10000; i++) {
+  //   char.name;
+  // }
+
   s..stop();
   // print(char);
   return s;

@@ -19,3 +19,11 @@ dependencies:
   hive: ^1.4.1+1
   msgpack_dart: ^0.0.7
   isar: ^0.0.0  # Notice copied binary from github!
+
+
+dependency_overrides:
+  flat_buffers:
+    git:
+      url: https://github.com/google/flatbuffers
+      path: dart
+

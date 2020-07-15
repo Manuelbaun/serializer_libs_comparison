@@ -179,9 +179,11 @@ packages:
   flat_buffers:
     dependency: "direct main"
     description:
-      name: flat_buffers
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: dart
+      ref: HEAD
+      resolved-ref: "33e2d807919ee70e0b353f776c0ecbccf9cba130"
+      url: "https://github.com/google/flatbuffers"
+    source: git
     version: "1.12.0"
   glob:
     dependency: transitive
