@@ -117,6 +117,25 @@ Thoughts:
 
 
 
+### Update 15.07.2020
+Added encoding via Flexbuffer
+Runs 1000:
+
+```
+Hive                             Types.encode        70 bytes :     18.438 average ticks
+Hive                             Types.decode        70 bytes :     14.796 average ticks
+Flatbuffers objectBuilder        Types.encode       160 bytes :     23.262 average ticks
+Flatbuffers objectBuilder        Types.decode       160 bytes :      1.557 average ticks
+Flatbuffers buffersBuilder       Types.encode       160 bytes :      27.91 average ticks
+Flatbuffers buffersBuilder       Types.decode       160 bytes :      1.257 average ticks
+Message Pack                     Types.encode        70 bytes :     49.261 average ticks
+Message Pack                     Types.decode        70 bytes :     16.825 average ticks
+FlexBuffers build into Vector    Types.encode       130 bytes :     45.445 average ticks
+FlexBuffers build into Map       Types.encode       154 bytes :     59.425 average ticks
+FlexBuffers build from Object    Types.encode       200 bytes :     80.416 average ticks
+```
+
+
 ### commands to compile flatbuffers
 `.\flatc.exe --dart  -o .\lib\models -I .\idl .\idl\monster.fbs`
 

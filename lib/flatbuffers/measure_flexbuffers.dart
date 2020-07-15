@@ -6,7 +6,6 @@ import '../data.dart';
 void measureFlexbuffers() {
   _buildVector();
   _buildMap();
-
   _buildFromObject();
 }
 
@@ -18,7 +17,7 @@ void _buildFromObject() {
   s..stop();
 
   TIME_RECORDER.add(Tracking(
-      library: 'FlexBuffery build from Object',
+      library: 'FlexBuffers build from Object',
       bytes: bytes.lengthInBytes,
       type: Types.encode,
       watch: s));
@@ -43,7 +42,7 @@ void _buildVector() {
   s..stop();
 
   TIME_RECORDER.add(Tracking(
-      library: 'FlexBuffery build into Vector',
+      library: 'FlexBuffers build into Vector',
       bytes: bytes.length,
       type: Types.encode,
       watch: s));
@@ -80,7 +79,7 @@ void _buildMap() {
   s..stop();
 
   TIME_RECORDER.add(Tracking(
-      library: 'FlexBuffery build into Map',
+      library: 'FlexBuffers build into Map',
       bytes: bytes.length,
       type: Types.encode,
       watch: s));
