@@ -122,17 +122,18 @@ Added encoding via Flexbuffer
 Runs 1000:
 
 ```
-Hive                             Types.encode        70 bytes :     18.438 average ticks
-Hive                             Types.decode        70 bytes :     14.796 average ticks
-Flatbuffers objectBuilder        Types.encode       160 bytes :     23.262 average ticks
-Flatbuffers objectBuilder        Types.decode       160 bytes :      1.557 average ticks
-Flatbuffers buffersBuilder       Types.encode       160 bytes :      27.91 average ticks
-Flatbuffers buffersBuilder       Types.decode       160 bytes :      1.257 average ticks
-Message Pack                     Types.encode        70 bytes :     49.261 average ticks
-Message Pack                     Types.decode        70 bytes :     16.825 average ticks
-FlexBuffers build into Vector    Types.encode       130 bytes :     45.445 average ticks
-FlexBuffers build into Map       Types.encode       154 bytes :     59.425 average ticks
-FlexBuffers build from Object    Types.encode       200 bytes :     80.416 average ticks
+Hive                             Types.encode        70 bytes :     21.349 average ticks
+Hive                             Types.decode        70 bytes :     17.166 average ticks
+Flatbuffers objectBuilder        Types.encode       160 bytes :     29.019 average ticks
+Flatbuffers objectBuilder        Types.decode       160 bytes :       1.55 average ticks
+Flatbuffers buffersBuilder       Types.encode       160 bytes :     31.653 average ticks
+Flatbuffers buffersBuilder       Types.decode       160 bytes :      1.241 average ticks
+Message Pack                     Types.encode        70 bytes :     46.659 average ticks
+Message Pack                     Types.decode        70 bytes :     19.075 average ticks
+FlexBuffers build from Object    Types.encode       200 bytes :     96.137 average ticks
+FlexBuffers Reference Object     Types.decode       200 bytes :      2.196 average ticks
+FlexBuffers build into Vector    Types.encode       130 bytes :     45.636 average ticks
+FlexBuffers build into Map       Types.encode       154 bytes :     68.367 average ticks
 ```
 
 
